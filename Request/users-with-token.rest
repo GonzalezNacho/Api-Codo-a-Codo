@@ -1,0 +1,88 @@
+# @name login
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+  "username":"admin",
+  "password":"123456"
+}
+
+###
+POST http://127.0.0.1:8000/users/
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "name":"Ignacio",
+  "lastname":"González",
+  "user": "nacho101092",
+  "email":"nacho@gmail.com"
+}
+###
+POST http://127.0.0.1:8000/users/
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "name":"Alexander",
+  "lastname":"Gomez",
+  "user": "alexcabj01",
+  "email":"alex@gmail.com"
+}
+
+###
+POST http://127.0.0.1:8000/users/
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "name":"Facundo",
+  "lastname":"Beltran",
+  "user": "facuBel7",
+  "email":"facu_beltran@gmail.com"
+}
+
+###
+
+POST http://127.0.0.1:8000/users/
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "name":"Johanna",
+  "lastname":"Fernandez",
+  "user": "Joha_numeritos",
+  "email":"johafernandez@gmail.com"
+}
+
+###
+
+PUT http://127.0.0.1:8000/users/2
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "id":"2",
+  "name":"Alexander EDITADO",
+  "lastname":"Gomez",
+  "user": "alexcabj01",
+  "email":"alex@gmail.com"
+}
+
+####
+
+GET http://127.0.0.1:8000/users/2
+
+####
+
+DELETE http://127.0.0.1:8000/users/2
+Content-Type: application/json 
+Authorization: Bearer {{ login.response.body.token }}
+
+####
+
+GET http://127.0.0.1:8000/users?lastname=Gomez
+
+####
+
+GET http://127.0.0.1:8000/users?name=Ignacio

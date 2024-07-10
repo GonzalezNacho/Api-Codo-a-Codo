@@ -1,0 +1,38 @@
+GET http://localhost:8000/keepalive
+
+###
+
+GET http://localhost:8000/users
+
+
+###
+
+POST http://localhost:8000/users/
+Content-Type: application/json
+
+{
+  "name":"Ignacio",
+  "lastname":"González",
+  "email":"nacho@gmail.com",
+  "password":"prueba123"
+}
+
+###
+
+GET http://localhost:8000/users/11
+
+###
+
+DELETE  http://localhost:8000/users/11
+
+###
+
+PUT http://localhost:8000/users/12
+Content-Type: application/json
+
+{
+  "name":"AIgnacio",
+  "lastname":"González",
+  "email":"nacho@gmail.com",
+  "password":"prueba"
+}
