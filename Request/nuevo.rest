@@ -14,6 +14,16 @@ Content-Type: application/json
   "name":"Ignacio",
   "lastname":"González",
   "email":"nacho@gmail.com",
+  "password":"prueba123",
+  "profile":"admin"
+}
+
+###
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+  "email":"nacho@gmail.com",
   "password":"prueba123"
 }
 
@@ -23,7 +33,7 @@ GET http://localhost:8000/users/11
 
 ###
 
-DELETE  http://localhost:8000/users/11
+DELETE  http://localhost:8000/users/19
 
 ###
 

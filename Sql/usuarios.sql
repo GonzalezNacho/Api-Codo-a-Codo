@@ -28,8 +28,10 @@ CREATE TABLE `usuarios` (
   `lastname` varchar(200) COLLATE utf8mb3_unicode_ci NOT NULL,
   `email` varchar(200) COLLATE utf8mb3_unicode_ci NOT NULL,
   `password` varchar(200) COLLATE utf8mb3_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+  `profile` varchar(5) COLLATE utf8mb3_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +40,9 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (12,'AIgnacio','González','nacho@gmail.com','prueba');
+
+/*Para crear el administrador usamos la siguiente linea*/;
+INSERT INTO `usuarios` VALUES (1,'Admin','Admin','Admin@gmail.com','$2a$08$zmgbp7fUdtyN.t/yie5DG.39w5tu8HAFqGqC.CVCrGVm0JfrkOoSW','admin');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-09 23:55:42
+-- Dump completed on 2024-07-11 18:38:56

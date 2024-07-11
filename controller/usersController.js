@@ -1,4 +1,5 @@
 const db = require('../utils/db');
+const bcrypt = require('bcryptjs');
 
 /* Obtener todos los usuarios */
 const getAllUsers = (req, res) => {
@@ -9,7 +10,7 @@ const getAllUsers = (req, res) => {
     })
 };
 
-/* Obtener uno especifico */
+/* Obtener uno especifico por id*/
 const getUserById = (req, res) => {
     const id = req.params.id;
     const sql = 'SELECT * FROM usuarios WHERE id = ?';
@@ -22,11 +23,15 @@ const getUserById = (req, res) => {
 /* Agregar un elemento */
 
 const addUser = (req, res) => {
-    const {name, lastname, email, password} = { ...req.body }
-    const sql = 'INSERT INTO usuarios (name,lastname,email, password) VALUES (?,?,?,?)';
-    db.query(sql,[name, lastname, email, password], (err,result) => {
+    const {name, lastname, email, password, profile} = { ...req.body }
+    const hashedPassword = bcrypt.hashSync(password, 8);
+    const sql = 'INSERT INTO usuarios (name,lastname,email, password, profile) VALUES (?,?,?,?,?)';
+    db.query(sql,[name, lastname, email, hashedPassword, profile], (err,result) => {
+        if(err?.code === 'ER_DUP_ENTRY') {
+            return res.status(409).json({ message: 'El usuario ya existe' });
+        }
         if(err) throw err;
-        res.status(201).json({ message: 'Usuario eliminado' });
+        res.status(201).json({ message: 'Usuario agregado' });
     });
 };
 
