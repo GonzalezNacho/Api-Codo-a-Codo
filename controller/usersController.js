@@ -1,7 +1,6 @@
-const middleware = require('../utils/middleware');
 const db = require('../utils/db');
 
-/* Obtener todo los comentarios */
+/* Obtener todos los usuarios */
 const getAllUsers = (req, res) => {
     const sql = 'SELECT * FROM usuarios';
     db.query(sql, (err, result) => {
