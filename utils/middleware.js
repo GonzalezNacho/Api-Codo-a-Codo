@@ -2,10 +2,7 @@ const jwt = require("jsonwebtoken");
 require('dotenv').config()
 
 const consoleData = (req, res, next) => {
-  console.log("Method:" + req.method);
-  console.log("Path:" + req.path);
-  console.log("Body:", req.body);
-  console.log("------");
+  console.table({method: req.method, path: req.path, body: req.body});
   next();
 };
 

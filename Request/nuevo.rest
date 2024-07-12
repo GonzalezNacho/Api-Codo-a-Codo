@@ -8,8 +8,29 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8000/keepalive
+POST http://localhost:8000/directors
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
 
+{
+  "name":"Christopher",
+  "lastname":"Nolan"
+}
+
+###
+
+POST http://localhost:8000/directors
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "name":"Martin",
+  "lastname":"Scorsese"
+}
+
+###
+
+GET http://localhost:8000/directors
 ###
 
 GET http://localhost:8000/users

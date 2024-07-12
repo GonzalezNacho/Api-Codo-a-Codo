@@ -1,0 +1,31 @@
+# @name login 
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+  "email":"user@gmail.com",
+  "password":"usuario"
+}
+
+###
+POST http://localhost:8000/directors
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "name":"Christopher",
+  "lastname":"Nolan"
+}
+
+###
+
+POST http://localhost:8000/directors
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "name":"Martin",
+  "lastname":"Scorsese"
+}
+
+###

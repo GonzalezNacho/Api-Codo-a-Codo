@@ -5,7 +5,7 @@ const middleware = require('../utils/middleware');
 
 router.get('/', directorsController.getAllDirectors);
 router.get('/:id', directorsController.getDirectorById);
-router.post('/', directorsController.addDirector);
+router.post('/', middleware.validarUserLogin, directorsController.addDirector);
 router.put('/:id', directorsController.editDirector);
 router.delete('/:id', directorsController.deleteDirector);
 
