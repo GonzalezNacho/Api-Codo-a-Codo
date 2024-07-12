@@ -3,6 +3,8 @@ const cors = require("cors");
 const middleware = require("./utils/middleware");
 const keepaliveController = require("./controller/keepalive");
 const usersRoutes = require("./routes/usersRoutes");
+const moviesRoutes = require("./routes/moviesRoutes");
+const directorsRoutes = require("./routes/directorsRoutes");
 const loginController = require("./controller/login");
 
 const app = express();
@@ -15,6 +17,8 @@ app.use(middleware.processToken);
 
 app.use("/keepalive", keepaliveController);
 app.use("/users", usersRoutes);
+app.use("/movies", moviesRoutes);
+app.use("/directors", directorsRoutes);
 app.use("/login", loginController);
 
 app.use(middleware.unknownEndpoint);

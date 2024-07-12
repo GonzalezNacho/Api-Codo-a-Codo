@@ -35,6 +35,16 @@ const addUser = (req, res) => {
     });
 };
 
+const addAdmin = (req, res) => {
+    req.body.profile = 'admin';
+    addUser(req, res);
+}
+
+const addStandardUser = (req, res) => {
+    req.body.profile = 'user';
+    addUser(req, res);
+}
+
 /* Borrar un elemento */
 
 const deleteUser = (req, res) => {
@@ -58,4 +68,4 @@ const editUser = (req, res) => {
     });
 };
 
-module.exports = { getAllUsers, getUserById, addUser, deleteUser, editUser };
+module.exports = { getAllUsers, getUserById, addStandardUser, addAdmin, deleteUser, editUser };

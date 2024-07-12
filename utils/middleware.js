@@ -36,4 +36,11 @@ const validarUserLogin = (req, resp, next) => {
   next()
 }
 
-module.exports = { consoleData, unknownEndpoint,processToken, validarUserLogin };
+const validarAdmin = (req, resp, next) => {
+  if(req.user.profile !== 'admin'){
+    return resp.status(401).json({error: 'user not admin'})
+  }
+  next()
+}
+
+module.exports = { consoleData, unknownEndpoint,processToken, validarUserLogin, validarAdmin };

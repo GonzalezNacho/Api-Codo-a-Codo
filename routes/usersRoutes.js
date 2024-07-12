@@ -5,7 +5,8 @@ const middleware = require('../utils/middleware');
 
 router.get('/', usersController.getAllUsers);
 router.get('/:id', usersController.getUserById);
-router.post('/', usersController.addUser);
+router.post('/', usersController.addStandardUser);
+router.post('/admin',middleware.validarUserLogin, usersController.addAdmin);
 router.put('/:id', usersController.editUser);
 router.delete('/:id', usersController.deleteUser);
 
