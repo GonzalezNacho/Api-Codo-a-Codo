@@ -4,6 +4,7 @@ const middleware = require("./utils/middleware");
 const keepaliveController = require("./controller/keepalive");
 const usersRoutes = require("./routes/usersRoutes");
 const moviesRoutes = require("./routes/moviesRoutes");
+const commentsRoutes = require("./routes/commentsRoutes.js");
 const directorsRoutes = require("./routes/directorsRoutes");
 const loginController = require("./controller/login");
 
@@ -19,6 +20,7 @@ app.use("/keepalive", keepaliveController);
 app.use("/users", usersRoutes);
 app.use("/movies", moviesRoutes);
 app.use("/directors", directorsRoutes);
+app.use("/comments", commentsRoutes);
 app.use("/login", loginController);
 
 app.use(middleware.unknownEndpoint);
