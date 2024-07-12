@@ -2,14 +2,13 @@
 const jwt = require('jsonwebtoken');
 const router = require('express').Router();
 const db = require('../utils/db');
-const usersController = require('../controller/usersController');
 const bcrypt = require('bcryptjs');
 require('dotenv').config()
 
 
 router.post('/', (req,res)=>{
   const {body} = req
-  const sql = 'SELECT * FROM usuarios WHERE email = ?';
+  const sql = 'SELECT * FROM users WHERE email = ?';
   db.query(sql,[body.email], (err,result) => {
     if (err) throw err;
     if(result.length > 0 && bcrypt.compareSync(body.password,result[0].password)){
