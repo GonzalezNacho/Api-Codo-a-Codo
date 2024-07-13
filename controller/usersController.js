@@ -3,12 +3,9 @@ const bcrypt = require('bcryptjs');
 
 /* Obtener todos los usuarios */
 const getAllUsers = (req, res) => {
-    let sql;
-    if (req.user.profile === 'admin') {
-        sql = 'SELECT * FROM users';
-    } else {
-        sql = `SELECT id, name, lastname, email FROM users WHERE profile = 'user'`;
-    }
+    const sql = req.user.profile === 'admin' 
+        ? 'SELECT * FROM users' 
+        : 'SELECT id, name, lastname, email FROM users WHERE profile = "user"';
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.status(200).json(result);
@@ -32,9 +29,7 @@ const addUser = (req, res) => {
     const hashedPassword = bcrypt.hashSync(password, 8);
     const sql = 'INSERT INTO users (name,lastname,email, password, profile) VALUES (?,?,?,?,?)';
     db.query(sql,[name, lastname, email, hashedPassword, profile], (err,result) => {
-        if(err?.code === 'ER_DUP_ENTRY') {
-            return res.status(409).json({ message: 'El usuario ya existe' });
-        }
+        if(err?.code === 'ER_DUP_ENTRY') return res.status(409).json({ message: 'El usuario ya existe' });
         if(err) throw err;
         res.status(201).json({ message: 'Usuario agregado' });
     });
@@ -63,11 +58,12 @@ const deleteUser = (req, res) => {
 
 /* Modificar un elemento */
 const editUser = (req, res) => {
-    const id = req.params.id;
+    const id = req.params.id ?? req.user.id;
     const {name, lastname, email, password} = { ...req.body }
-    console.table({name, lastname, email, password, id})
+    const hashedPassword = bcrypt.hashSync(password, 8);
     const sql = 'UPDATE users SET name = ?, lastname = ?, email = ?, password = ? WHERE id = ?';
-    db.query(sql,[name,lastname,email,password,id], (err,result) => {
+    db.query(sql,[name,lastname,email,hashedPassword,id], (err,result) => {
+        if(err?.code === 'ER_DUP_ENTRY') return res.status(409).json({ message: 'El correo esta repetido o ya existe' });
         if(err) throw err;
         res.status(202).json({ message: 'Usuario editado' });
     });

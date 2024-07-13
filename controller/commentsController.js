@@ -18,7 +18,8 @@ const getCommentById = (req, res) => {
 };
 
 const addComment = (req, res) => {
-    const {comment, rating, movie_id, user_id} = { ...req.body }
+    const user_id = req.user.id
+    const {comment, rating, movie_id} = { ...req.body }
     const sql = 'INSERT INTO comments (comment, rating, movie_id, user_id) VALUES (?,?,?,?)';
     db.query(sql,[comment, rating, movie_id, user_id], (err,result) => {
         if(err) throw err;
@@ -27,11 +28,17 @@ const addComment = (req, res) => {
 };
 
 const editComment = (req, res) => {
-    const id = req.params.id;
-    const {comment} = { ...req.body }
-    const sql = 'UPDATE comments SET comment = ? WHERE id = ?';
-    db.query(sql,[comment, id], (err,result) => {
+    const {comment, rating} = { ...req.body }
+    const sql = req.user.profile === 'admin' 
+        ? 'UPDATE comments SET comment = ?, rating = ? WHERE id = ?' 
+        : 'UPDATE comments SET comment = ?, rating = ? WHERE id = ? AND user_id = ?';
+    const params =  [comment, rating, req.params.id];     
+    if (req.user.profile === 'user') params.push(req.user.id); 
+    db.query(sql,params, (err,result) => {
         if(err) throw err;
+        if(result.affectedRows === 0) {
+            return res.status(401).json({ message: 'No tienes permisos para editar este comentario' });
+        }
         res.status(202).json({ message: 'Comentario editado' });
     });
 };

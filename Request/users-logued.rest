@@ -18,7 +18,29 @@ Authorization: Bearer {{ login.response.body.token }}
 }
 
 ###
+POST http://localhost:8000/movies
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
 
+{
+  "title" : "Interstelar",
+  "directorId": 1,
+  "year": 2014,
+  "rating": 8.2,
+  "genres": "Ciencia ficción"
+}
+
+###
+POST http://localhost:8000/comments
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "comment" : "Comentario de prueba",
+  "rating": 6,
+  "movie_id": 1
+}
+###
 GET http://localhost:8000/users
 Authorization: Bearer {{ login.response.body.token }}
 ###
@@ -30,4 +52,25 @@ Authorization: Bearer {{ login.response.body.token }}
 
 GET http://localhost:8000/movies
 Authorization: Bearer {{ login.response.body.token }}
+###
+PUT http://localhost:8000/comments/4
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "comment" : "Ahora cambia porque es el propietario",
+  "rating": 10
+}
+###
+
+PUT http://localhost:8000/users/
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+  "name": "Daniel",
+  "lastname": "Perez",
+  "email": "daniel@gmail.com",
+  "password": "usuario123"
+}
 ###

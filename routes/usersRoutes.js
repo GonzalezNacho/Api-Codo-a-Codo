@@ -7,7 +7,8 @@ router.get('/', validarUserLogin, usersController.getAllUsers);
 router.get('/:id', validarUserLogin, usersController.getUserById);
 router.post('/', usersController.addStandardUser);
 router.post('/admin', validarUserLogin, validarAdmin, usersController.addAdmin);
-router.put('/:id', validarUserLogin, usersController.editUser);
+router.put('/:id', validarUserLogin, validarAdmin, usersController.editUser);
+router.put('/', validarUserLogin, usersController.editUser);
 router.delete('/:id', validarUserLogin, validarAdmin, usersController.deleteUser);
 
 module.exports = router;
