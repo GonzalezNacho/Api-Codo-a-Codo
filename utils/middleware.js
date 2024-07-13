@@ -40,4 +40,18 @@ const validarAdmin = (req, resp, next) => {
   next()
 }
 
-module.exports = { consoleData, unknownEndpoint,processToken, validarUserLogin, validarAdmin };
+const validarMovies = (req, resp, next) => {
+  if(!req.token ){
+    req.user = {username:'reader',profile:'user'}
+  } else {
+    const decodeToken = jwt.verify(req.token,process.env.JWTSECRET)
+  
+    if( !decodeToken.id){
+      return resp.status(401).json({error: 'token invalid'})
+    }
+    req.user = decodeToken
+  }  
+  next()
+}
+
+module.exports = { consoleData, unknownEndpoint,processToken, validarUserLogin, validarAdmin, validarMovies };

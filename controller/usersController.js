@@ -3,7 +3,12 @@ const bcrypt = require('bcryptjs');
 
 /* Obtener todos los usuarios */
 const getAllUsers = (req, res) => {
-    const sql = 'SELECT * FROM users';
+    let sql;
+    if (req.user.profile === 'admin') {
+        sql = 'SELECT * FROM users';
+    } else {
+        sql = `SELECT id, name, lastname, email FROM users WHERE profile = 'user'`;
+    }
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.status(200).json(result);

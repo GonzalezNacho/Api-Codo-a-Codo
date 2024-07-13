@@ -3,8 +3,8 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-  "email":"user@gmail.com",
-  "password":"usuario"
+  "email":"daniel@gmail.com",
+  "password":"usuario123"
 }
 
 ###
@@ -19,13 +19,15 @@ Authorization: Bearer {{ login.response.body.token }}
 
 ###
 
-POST http://localhost:8000/directors
-Content-Type: application/json
+GET http://localhost:8000/users
+Authorization: Bearer {{ login.response.body.token }}
+###
+
+GET http://localhost:8000/comments
 Authorization: Bearer {{ login.response.body.token }}
 
-{
-  "name":"Martin",
-  "lastname":"Scorsese"
-}
+###
 
+GET http://localhost:8000/movies
+Authorization: Bearer {{ login.response.body.token }}
 ###
