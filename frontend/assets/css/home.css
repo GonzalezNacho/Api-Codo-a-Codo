@@ -8,12 +8,13 @@ main {
 }
 
 main h2 {
+    padding-top: 10px;
     color: var(--main-primary-text-color);
 }
 
 section {
     display: flex;
-    width: 80%;
+    width: 60%;
     justify-content: space-around;
 }
 
@@ -41,7 +42,7 @@ section button:hover {
     color: var(--main-primary-text-color);
 }
 
-section #results {
+section #resultados {
     display: flex;
     background-color: var(--main-primary-text-color);
     color: var(--footer-bg-color);
@@ -50,6 +51,7 @@ section #results {
     padding: 1rem;
     border-radius: 0.5rem;
     gap: 1rem;
+    overflow: auto;
 }
 
 #crear-usuario {
@@ -92,4 +94,15 @@ section form input[type="submit"]:hover {
 
 input::placeholder {
     color: var(--footer-text-color);
+}
+
+/*media queries*/
+
+@media screen and (max-width: 768px) {
+    section {
+        width: 90%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }

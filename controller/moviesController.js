@@ -2,13 +2,9 @@ const db = require('../utils/db');
 
 /* Obtener todos los usuarios */
 const getAllMovies = (req, res) => {
-    let sql;
-    console.log(req.user)
-    if (req.user.profile === 'admin') {
-        sql = 'SELECT * FROM movies';
-    } else {
-        sql = `SELECT title, year, genres, director_id, name, lastname FROM movies INNER JOIN directors ON movies.director_id = directors.id`;
-    }
+    const sql = req.user.profile === 'admin'
+        ? 'SELECT * FROM movies'
+        : 'SELECT title, year, genres, director_id, name, lastname FROM movies INNER JOIN directors ON movies.director_id = directors.id';
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.status(200).json(result);
