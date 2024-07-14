@@ -29,6 +29,10 @@ const validarUserLogin = (req, resp, next) => {
   if( !decodeToken.id){
     return resp.status(401).json({error: 'token invalid'})
   }
+  
+  if( decodeToken.exp < Date.now() / 1000){
+    return resp.status(401).json({error: 'token expired'})
+  }
   req.user = decodeToken
   next()
 }

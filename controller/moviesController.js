@@ -4,7 +4,7 @@ const db = require('../utils/db');
 const getAllMovies = (req, res) => {
     const sql = req.user.profile === 'admin'
         ? 'SELECT * FROM movies'
-        : 'SELECT title, year, genres, director_id, name, lastname FROM movies INNER JOIN directors ON movies.director_id = directors.id';
+        : 'SELECT movies.id as id, title, year, genres, director_id, name, lastname FROM movies INNER JOIN directors ON movies.director_id = directors.id';
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.status(200).json(result);

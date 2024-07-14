@@ -92,6 +92,46 @@ section form input[type="submit"]:hover {
     color: var(--main-primary-text-color);
 }
 
+section form select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin: 0 0.3rem;
+}
+
+section form select:focus {
+    outline: none;
+}
+
+section form select option {
+    background-color: var(--footer-bg-color);
+    color: var(--main-primary-text-color);
+}
+
+section form select option:hover {
+    background-color: var(--main-primary-text-color);
+    color: var(--footer-bg-color);
+}
+
+section form select option:checked {
+    background-color: var(--main-primary-text-color);
+    color: var(--footer-bg-color);
+}
+
+section form select option:checked:hover {
+    background-color: var(--footer-bg-color);
+    color: var(--main-primary-text-color);
+}
+
+#resultados p {
+    color: var(--footer-bg-color);
+}
+
+#editar-usuario {
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
 input::placeholder {
     color: var(--footer-text-color);
 }

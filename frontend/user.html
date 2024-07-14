@@ -34,13 +34,19 @@
             </div>
         </section>
         <section id="comentarios">
-            <select name="method" id="method">
-                <option value="POST">POST</option>
-                <option value="PUT">PUT</option>
-            </select>
+            <form id="form-comment">
+                <select name="method" id="method">
+                    <option value="POST">Añadir</option>
+                    <option value="PUT">Editar</option>
+                </select>
+                <input id="requestId" type="number" min="1" placeholder="Id" required>
+                <input id="rating" type="number" min="1" max="10" placeholder="Puntaje" required>
+                <input id="comment" type="text" placeholder="Comentario" required>
+                <input type="submit" value="Añadir/Editar comentario">
+            </form>
         </section>
         <section id="editar-usuario">
-            <button id="editar-usuario">Editar usuario</button>
+            <button id="boton-editar-usuario">Editar usuario</button>
         </section>
     </main>
     <footer>- Gonzalez Escalada Ignacio -</footer>
