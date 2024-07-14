@@ -15,7 +15,9 @@ const getAllUsers = (req, res) => {
 /* Obtener uno especifico por id*/
 const getUserById = (req, res) => {
     const id = req.params.id === 'me' ? req.user.id : req.params.id;
-    const sql = req.user.profile === 'admin' ? 'SELECT * FROM users WHERE id = ?' : 'SELECT * FROM users WHERE id = ? AND profile = "user"';
+    const sql = req.user.profile === 'admin' 
+        ? 'SELECT * FROM users WHERE id = ?' 
+        : 'SELECT * FROM users WHERE id = ? AND profile = "user"';
     db.query(sql,[id], (err,result) => {
         if(err) throw err;
         res.status(200).json(result);
