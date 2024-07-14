@@ -22,6 +22,7 @@ const addComment = (req, res) => {
     const {comment, rating, movie_id} = { ...req.body }
     const sql = 'INSERT INTO comments (comment, rating, movie_id, user_id) VALUES (?,?,?,?)';
     db.query(sql,[comment, rating, movie_id, user_id], (err,result) => {
+        if(err?.code === 'ER_NO_REFERENCED_ROW_2') return res.status(404).json({ message: 'Pelicula no encontrada' });
         if(err) throw err;
         res.status(201).json({ message: 'Comentario agregado' });
     });
