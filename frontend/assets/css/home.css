@@ -16,6 +16,7 @@ section {
     display: flex;
     width: 60%;
     justify-content: space-around;
+    gap: 2rem;
 }
 
 section h4 {
@@ -121,6 +122,14 @@ section form select option:checked {
 section form select option:checked:hover {
     background-color: var(--footer-bg-color);
     color: var(--main-primary-text-color);
+}
+
+section form textarea {
+    resize: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin: 0 0.3rem;
 }
 
 #resultados p {

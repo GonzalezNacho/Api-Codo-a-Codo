@@ -27,7 +27,7 @@ method.addEventListener('change', () => {
 
 formComment.addEventListener('submit', async (e) => {
     e.preventDefault();
-    let url = 'comments';
+    let url = '/comments';
     const body = {
         comment: comment.value,
         rating: rating.value
@@ -44,13 +44,13 @@ formComment.addEventListener('submit', async (e) => {
         return;
     } 
     formComment.reset();
-    mostrarJsonEnHtml('comments', token);
+    mostrarJsonEnHtml('/comments', token);
 });
 
 const botonEditarUsuario = document.getElementById('boton-editar-usuario');
 
-botonPeliculas.addEventListener('click', () => mostrarJsonEnHtml('movies', token));
-botonDirectores.addEventListener('click',() => mostrarJsonEnHtml('directors', token));
-botonUsuarios.addEventListener('click',() => mostrarJsonEnHtml('users', token));
-botonComentarios.addEventListener('click',() => mostrarJsonEnHtml('comments', token));
+botonPeliculas.addEventListener('click', () => mostrarJsonEnHtml('/movies', token));
+botonDirectores.addEventListener('click',() => mostrarJsonEnHtml('/directors', token));
+botonUsuarios.addEventListener('click',() => mostrarJsonEnHtml('/users', token));
+botonComentarios.addEventListener('click',() => mostrarJsonEnHtml('/comments', token));
 botonEditarUsuario.addEventListener('click',() =>  mostrarModalEditarUsuario(token));

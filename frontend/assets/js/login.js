@@ -18,7 +18,6 @@ formUser.addEventListener('submit', async (e) => {
     sessionStorage.setItem('token', data.token);
     sessionStorage.setItem('nameUser', data.name);
     sessionStorage.setItem('profile', data.profile);
-    console.log(data);
     redirect(data.profile);
 })
 

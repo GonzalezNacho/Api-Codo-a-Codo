@@ -1,7 +1,7 @@
-export async function mostrarJsonEnHtml(query, token = null) {
+export async function mostrarJsonEnHtml(query, token = null, method = 'GET') {
     const Authorization = token ? `Bearer ${token}` : '';
-    const response = await fetch(`http://localhost:8000/${query}`, {
-        method: 'GET',
+    const response = await fetch(`http://localhost:8000${query}`, {
+        method: method,
         headers: {
             'Content-Type': 'application/json',
             Authorization
@@ -21,7 +21,7 @@ export async function enviarFormulario( body, url, token = null, method = 'POST'
         },
         body,
     }
-    const response = await fetch(`http://localhost:8000/${url}`, config);
+    const response = await fetch(`http://localhost:8000${url}`, config);
     const data = await response.json();
     return data;
 }

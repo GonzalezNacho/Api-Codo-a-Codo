@@ -8,8 +8,8 @@ const password = document.getElementById('password');
 const name = document.getElementById('name');
 const lastname = document.getElementById('lastname');
 
-botonPeliculas.addEventListener('click', () => mostrarJsonEnHtml('movies'));
-botonDirectores.addEventListener('click',() => mostrarJsonEnHtml('directors'));
+botonPeliculas.addEventListener('click', () => mostrarJsonEnHtml('/movies'));
+botonDirectores.addEventListener('click',() => mostrarJsonEnHtml('/directors'));
 
 formUser.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -19,5 +19,5 @@ formUser.addEventListener('submit', async (e) => {
         email: email.value,
         password: password.value
     });
-    const data = await enviarFormulario( body, 'users');
+    const data = await enviarFormulario( body, '/users');
 });

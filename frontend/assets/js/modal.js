@@ -42,7 +42,7 @@ export const mostrarModalEditarUsuario =  async (token) => {
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
         });
-        const data = await enviarFormulario( body, 'users', token, 'PUT');
+        const data = await enviarFormulario( body, '/users', token, 'PUT');
         if (data.error) {
             alert(data.error);
             return;
