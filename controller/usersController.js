@@ -14,15 +14,13 @@ const getAllUsers = (req, res) => {
 
 /* Obtener uno especifico por id*/
 const getUserById = (req, res) => {
-    const id = req.params.id;
+    const id = req.params.id === 'me' ? req.user.id : req.params.id;
     const sql = 'SELECT * FROM users WHERE id = ?';
     db.query(sql,[id], (err,result) => {
-        if(err) throw err;        
+        if(err) throw err;
         res.status(200).json(result);
     });
 };
-
-/* Agregar un elemento */
 
 const addUser = (req, res) => {
     const {name, lastname, email, password, profile} = { ...req.body }

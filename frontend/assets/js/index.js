@@ -1,4 +1,4 @@
-import { mostrarJsonEnHtml } from "./request.js";
+import { mostrarJsonEnHtml, enviarFormulario } from "./request.js";
 
 const botonPeliculas = document.getElementById('traer-peliculas');
 const botonDirectores = document.getElementById('traer-directores');
@@ -10,22 +10,14 @@ const lastname = document.getElementById('lastname');
 
 botonPeliculas.addEventListener('click', () => mostrarJsonEnHtml('movies'));
 botonDirectores.addEventListener('click',() => mostrarJsonEnHtml('directors'));
-formUser.addEventListener('submit', createUser);
 
-async function createUser(e) {
+formUser.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:8000/users', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            name: name.value,
-            lastname: lastname.value,
-            email: email.value,
-            password: password.value
-        }),
+    const body = JSON.stringify({
+        name: name.value,
+        lastname: lastname.value,
+        email: email.value,
+        password: password.value
     });
-    const data = await response.json();
-    alert(data);
-}
+    const data = await enviarFormulario( body, 'users');
+});

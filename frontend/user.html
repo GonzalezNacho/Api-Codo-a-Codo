@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/modal.css">
     <link rel="shortcut icon" href="./assets/img/claquetaW32.png" type="image/x-icon">
     <title>Api Codo a Codo</title>
 </head>
@@ -13,17 +14,20 @@
         <img src="./assets/img/claquetaWh32.png" alt="logo">
         <div>
             <nav >
+                <a id="user"></a>
                 <a href="#" class="boton">Logout</a>
             </nav>
         </div>
     </header>
     <main>
+        <div class="modal"></div>
         <h2>API Codo a Codo</h2>
         <section id="botones">
             <div>
                 <button id="traer-peliculas"> Peliculas</button>
                 <button id="traer-directores"> Directores</button>
                 <button id="traer-usuarios"> Usuarios</button>
+                <button id="traer-comentarios"> Comentarios</button>
             </div>
             <div id="resultados">
                 <pre id="results"></pre>
