@@ -19,7 +19,6 @@ formUser.addEventListener('submit', async (e) => {
     sessionStorage.setItem('nameUser', data.name);
     sessionStorage.setItem('profile', data.profile);
     console.log(data);
-    alert(`Bienvenido ${data.name}`);
     redirect(data.profile);
 })
 
