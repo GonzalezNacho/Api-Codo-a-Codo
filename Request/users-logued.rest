@@ -8,6 +8,10 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:8000/users/1
+Authorization: Bearer {{ login.response.body.token }}
+
+###
 POST http://localhost:8000/directors
 Content-Type: application/json
 Authorization: Bearer {{ login.response.body.token }}

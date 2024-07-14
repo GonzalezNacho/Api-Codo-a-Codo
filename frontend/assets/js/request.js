@@ -11,10 +11,10 @@ export async function mostrarJsonEnHtml(query, token = null) {
     results.innerHTML = JSON.stringify(data,null,2);
 }
 
-export async function enviarFormulario( body, url, token = null) {
+export async function enviarFormulario( body, url, token = null, method = 'POST') {
     const Authorization = token ? `Bearer ${token}` : '';
     const config = {
-        method: 'POST',
+        method: method,
         headers: {
             'Content-Type': 'application/json',
             Authorization
