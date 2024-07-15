@@ -17,16 +17,21 @@ const method = document.getElementById('method');
 const enviar = document.getElementById('enviar');
 
 method.addEventListener('change', () => {
+    const requestBody = document.getElementById('requestBody')
     if (method.value === 'PUT' || method.value === 'POST') {
-        const textArea = document.createElement('textarea');
-        textArea.id = 'requestBody';
-        textArea.name="jsonInput"; 
-        textArea.rows="10"; 
-        textArea.cols="30";
-        textArea.placeholder='{"key": "value"}';
-        formRequest.insertBefore(textArea, enviar);
+        if (!requestBody) {
+            const textArea = document.createElement('textarea');
+            textArea.id = 'requestBody';
+            textArea.name="jsonInput"; 
+            textArea.rows="10"; 
+            textArea.cols="30";
+            textArea.placeholder='{"key": "value"}';
+            formRequest.insertBefore(textArea, enviar);
+        }
     } else {
-        document.getElementById('requestBody').remove();
+        if (requestBody) {
+            requestBody.remove();
+        }
     }
 })
 
@@ -38,14 +43,18 @@ formRequest.addEventListener('submit', async (e) => {
     } else {
         const textArea = document.getElementById('requestBody');
         const json = textArea.value;
+        const jsonSinEspacios = json.trim();
+        if (jsonSinEspacios.length === 0) {
+            alert("El JSON no puede estar vacío");
+            return;
+        }
         try {
-            JSON.parse(json);
+            JSON.parse(jsonSinEspacios);
             alert("El JSON es válido");
         } catch (e) {
             alert("El JSON no es válido: " + e.message);
         }
-        const body = JSON.stringify(json);
-        const data = await enviarFormulario(body, url.value, token, method.value);
+        const data = await enviarFormulario(jsonSinEspacios, url.value, token, method.value);
         if (data.error) {
             alert(data.error);
             return;

@@ -10,7 +10,7 @@ formUser.addEventListener('submit', async (e) => {
         email: email.value,
         password: password.value
     });
-    const data = await enviarFormulario( body, 'login');
+    const data = await enviarFormulario( body, '/login');
     if (data.error) {
         alert(data.error);
         return;

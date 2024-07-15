@@ -21,6 +21,7 @@ export async function enviarFormulario( body, url, token = null, method = 'POST'
         },
         body,
     }
+    console.log(typeof(body));
     const response = await fetch(`http://localhost:8000${url}`, config);
     const data = await response.json();
     return data;
