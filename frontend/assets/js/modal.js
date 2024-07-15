@@ -1,7 +1,7 @@
-import { enviarFormulario } from "./request.js";
+import { enviarFormulario, link } from "./request.js";
 
 export const mostrarModalEditarUsuario =  async (token) => {
-    const response = await fetch(`http://localhost:8000/users/me`, {
+    const response = await fetch(`${link}/users/me`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
