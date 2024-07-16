@@ -14,6 +14,10 @@
     "routes": [
         {
             "src": "/(.*)",
+            "dest": "/frontend/$1"
+        },
+        {
+            "src": "/(.*)",
             "dest": "/index.js",
             "methods": [
                 "POST",
@@ -22,10 +26,6 @@
                 "DELETE",
                 "PATCH"
             ]
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/frontend/$1"
         }
     ]
 }
