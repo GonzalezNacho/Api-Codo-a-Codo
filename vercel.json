@@ -1,15 +1,20 @@
 {
     "version": 2,
+    "name": "Api-Codo-a-Codo",
     "builds": [
         {
-            "src": "./index.js",
+            "src": "index.js",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/"
+            "dest": "/index.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/frontend/$1"
         }
     ]
 }
