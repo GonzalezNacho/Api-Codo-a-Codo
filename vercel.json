@@ -17,7 +17,7 @@
             "dest": "/index.js"
         },
         {
-            "src": "/comments(/.*)?",
+            "src": "/comments/:id",
             "dest": "/index.js"
         },
         {
@@ -29,15 +29,11 @@
             "dest": "/index.js"
         },
         {
-            "src": "/movies/(.*)?",
+            "src": "/directors",
             "dest": "/index.js"
         },
         {
-            "src": "/directors(/.*)?",
-            "dest": "/index.js"
-        },
-        {
-            "src": "/users(/.*)?",
+            "src": "/users",
             "dest": "/index.js"
         },
         {
