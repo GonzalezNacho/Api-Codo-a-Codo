@@ -2,12 +2,15 @@ const jwt = require("jsonwebtoken");
 require('dotenv').config()
 
 const consoleData = (req, res, next) => {
-  console.table({method: req.method, path: req.path, body: req.body});
+  console.log("Method:" + req.method);
+  console.log("Path:" + req.path);
+  console.log("Body:", req.body);
+  console.log("------");
   next();
 };
 
 const unknownEndpoint = (req, res) => {
-  res.status(404).send({ error: "unknown endpoint" });
+  res.status(404).send({ error: "unknown endpoint", path: req.path });
 };
 
 const processToken = (req,resp,next) => {
