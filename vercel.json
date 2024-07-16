@@ -25,7 +25,11 @@
             "dest": "/index.js"
         },
         {
-            "src": "/movies(/.*)?",
+            "src": "/movies",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/movies/(.*)?",
             "dest": "/index.js"
         },
         {
