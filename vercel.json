@@ -11,5 +11,12 @@
             "src": "/(.*)",
             "dest": "/"
         }
+    ], 
+    "redirects": [
+        {
+            "source": "/",
+            "destination": "./frontend/index.html",
+            "status": 200
+        }
     ]
 }
