@@ -5,12 +5,23 @@
         {
             "src": "index.js",
             "use": "@vercel/node"
+        },
+        {
+            "src": "frontend/**/*",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
         {
-            "src": "/api/(.*)",
-            "dest": "/"
+            "src": "/(.*)",
+            "dest": "/index.js",
+            "methods": [
+                "POST",
+                "GET",
+                "PUT",
+                "DELETE",
+                "PATCH"
+            ]
         },
         {
             "src": "/(.*)",
