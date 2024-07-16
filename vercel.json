@@ -13,20 +13,32 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "/frontend/$1",
-            "continue": true
+            "src": "/login",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/comments/(.*)",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/keepalive",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/movies/(.*)",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/directors/(.*)",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/assets/(.*)",
+            "dest": "/frontend/assets/$1"
         },
         {
             "src": "/(.*)",
-            "dest": "/index.js",
-            "methods": [
-                "POST",
-                "GET",
-                "PUT",
-                "DELETE",
-                "PATCH"
-            ]
+            "dest": "/frontend/$1"
         }
     ]
 }
