@@ -1,4 +1,4 @@
-export const link ='https://api-codo-a-codo.vercel.app';
+export const link ='https://api-codo-a-codo.vercel.app/api';
 
 export async function mostrarJsonEnHtml(query, token = null, method = 'GET') {
     const Authorization = token ? `Bearer ${token}` : '';

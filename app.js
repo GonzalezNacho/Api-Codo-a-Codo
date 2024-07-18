@@ -16,12 +16,12 @@ app.use(express.json());
 app.use(middleware.consoleData);
 app.use(middleware.processToken);
 
-app.use("/keepalive", keepaliveController);
-app.use("/users", usersRoutes);
-app.use("/movies", moviesRoutes);
-app.use("/directors", directorsRoutes);
-app.use("/comments", commentsRoutes);
-app.use("/login", loginController);
+app.use("/api/keepalive", keepaliveController);
+app.use("/api/users", usersRoutes);
+app.use("/api/movies", moviesRoutes);
+app.use("/api/directors", directorsRoutes);
+app.use("/api/comments", commentsRoutes);
+app.use("/api/login", loginController);
 
 app.use(middleware.unknownEndpoint);
 module.exports = app;

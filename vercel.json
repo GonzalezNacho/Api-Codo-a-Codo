@@ -13,27 +13,7 @@
     ],
     "routes": [
         {
-            "src": "/login",
-            "dest": "/index.js"
-        },
-        {
-            "src": "/comments/:id",
-            "dest": "/index.js"
-        },
-        {
-            "src": "/keepalive",
-            "dest": "/index.js"
-        },
-        {
-            "src": "/movies",
-            "dest": "/index.js"
-        },
-        {
-            "src": "/directors",
-            "dest": "/index.js"
-        },
-        {
-            "src": "/users",
+            "src": "/api/(.*)",
             "dest": "/index.js"
         },
         {
